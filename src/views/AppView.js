@@ -30,20 +30,20 @@ define(function(require, exports, module) {
   };
 
   AppView.prototype.slideRight = function() {
-    this.pageModifier.setTransform(Transform.translate(276, 0, 0), {
-      duration: 300,
-      curve: 'easeOut'
-    });
+    this.pageModifier.setTransform(Transform.translate(0, 0, 0), this.options.transition);
   };
 
   AppView.prototype.slideLeft = function() {
-    this.pageModifier.setTransform(Transform.translate(0, 0, 0), {
-      duration: 300,
-      curve: 'easeOut'
-    });
+    this.pageModifier.setTransform(Transform.translate(this.options.openPosition, 0, 0), this.options.transition);
   };
 
-  AppView.DEFAULT_OPTIONS = {};
+  AppView.DEFAULT_OPTIONS = {
+    openPosition: 276,
+    transition: {
+      duration: 300,
+      curve: 'easeOut'
+    }
+  };
 
   function _createPageView() {
     this.pageView = new PageView();
